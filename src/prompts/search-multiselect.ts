@@ -169,6 +169,7 @@ export async function searchMultiselect<T>(
     };
 
     const cleanup = (): void => {
+      process.stdin.removeListener('keypress', keypressHandler);
       if (process.stdin.isTTY) {
         process.stdin.setRawMode(false);
       }
@@ -188,7 +189,7 @@ export async function searchMultiselect<T>(
     };
 
     // Handle keypresses
-    process.stdin.on('keypress', (_str: string, key: readline.Key) => {
+    const keypressHandler = (_str: string, key: readline.Key): void => {
       if (!key) return;
 
       const filtered = getFiltered();
@@ -242,7 +243,9 @@ export async function searchMultiselect<T>(
         render();
         return;
       }
-    });
+    };
+
+    process.stdin.on('keypress', keypressHandler);
 
     // Initial render
     render();

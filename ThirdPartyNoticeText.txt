@@ -9,9 +9,9 @@ Third Party Code Components
 --------------------------------------------
 
 ================================================================================
-Package: @clack/core@0.5.0
+Package: @clack/core@0.4.1
 License: MIT
-Repository: https://github.com/bombshell-dev/clack
+Repository: https://github.com/natemoo-re/clack
 --------------------------------------------------------------------------------
 
 MIT License
